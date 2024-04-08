@@ -2,7 +2,7 @@ import logo from "../../img/Logo.png";
 function NavBar() {
   return (
     <>
-      <nav className="flex bg-faded-black items-center justify-between p-4">
+      <nav className="flex absolute w-full bg-neutral-950/50 items-center justify-between px-8 py-4">
         <div>
           <img src={logo} alt="coffee south logo" />
         </div>
