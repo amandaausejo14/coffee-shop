@@ -3,8 +3,12 @@ import coffeeDrop from "../../assets/coffee-drop.mp4";
 import { ReactTyped } from "react-typed";
 import FirstLayout from "./FirstLayout.jsx";
 import Alpaca from "../../assets/alpaca.jpg";
-import Montains from "../../assets/peru-montains.jpg";
-import Sea from "../../assets/peru-sea.jpg";
+import Montains from "../../assets/montains.jpg";
+import Sea from "../../assets/sea.jpg";
+import ShopImg1 from "../../assets/shopImg1.jpg";
+import ShopImg2 from "../../assets/shopImg2.jpg";
+import ShopImg3 from "../../assets/shopImg3.jpg";
+import Footer from "./Footer.jsx";
 function HomePage() {
   return (
     <div>
@@ -47,14 +51,15 @@ function HomePage() {
         btnText="Discover"
       />
       <FirstLayout
-        img1={Alpaca}
-        img2={Montains}
-        img3={Sea}
+        img1={ShopImg2}
+        img2={ShopImg1}
+        img3={ShopImg3}
         imgPosition="rigth"
         title="A bit of South America in a tiny place."
-        paragraph="Step into our cozy cafe, where the aroma of freshly roasted South American coffee beans fills the air, inviting you to indulge in a moment of pure sensory delight. Located in the heart of Warsaw, our cozy space invites you to savor the rich flavors of Colombia and Brazil in every cup. Join us for a memorable coffee experience that captures the essence of South American culture."
+        paragraph="Step into our cozy cafe, where the aroma of freshly roasted South American coffee beans fills the air, inviting you to indulge in a moment of pure sensory delight. Located in the heart of Warsaw, our intimate space offers a tranquil escape from the bustling city streets, welcoming you to unwind and immerse yourself in the rich tapestry of South American coffee culture. As you step through our doors, the warm ambiance envelops you, setting the stage for a truly immersive coffee journey. From the smooth, chocolatey notes of Colombian beans to the bold, fruity undertones of Brazilian blends, each sip tells a story of distant lands and time-honored traditions."
         btnText="Discover"
       />
+      <Footer />
     </div>
   );
 }

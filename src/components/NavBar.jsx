@@ -8,7 +8,7 @@ function NavBar() {
     <>
       <nav className="flex absolute w-full bg-neutral-950/50 items-center justify-between px-8 py-4 z-10">
         <div>
-          <img src={logo} alt="coffee south logo" />
+          <img src={logo} alt="logo" className="w-[150px]" />
         </div>
         <menu className="hidden md:flex text-lg mt-2">
           <ul className="flex gap-6 text-white">
