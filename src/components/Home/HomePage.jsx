@@ -13,7 +13,6 @@ function HomePage() {
   return (
     <div>
       <div className="w-full h-screen">
-        <NavBar />
         <video src={coffeeDrop} autoPlay loop muted className="w-full h-full object-cover" />
         <div className="absolute w-full h-screen -top-0 flex flex-col justify-center items-center text-white">
           <div className="flex flex-col items-center p-4 text-center md:gap-3 ">
@@ -59,7 +58,6 @@ function HomePage() {
         paragraph="Step into our cozy cafe, where the aroma of freshly roasted South American coffee beans fills the air, inviting you to indulge in a moment of pure sensory delight. Located in the heart of Warsaw, our intimate space offers a tranquil escape from the bustling city streets, welcoming you to unwind and immerse yourself in the rich tapestry of South American coffee culture. As you step through our doors, the warm ambiance envelops you, setting the stage for a truly immersive coffee journey. From the smooth, chocolatey notes of Colombian beans to the bold, fruity undertones of Brazilian blends, each sip tells a story of distant lands and time-honored traditions."
         btnText="Discover"
       />
-      <Footer />
     </div>
   );
 }

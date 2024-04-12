@@ -1,21 +1,33 @@
 import { useState } from "react";
 import logo from "../../img/Logo.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { NavLink, useLocation } from "react-router-dom";
 function NavBar() {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
-
+  const locationHome = location.pathname === "/";
   return (
     <>
-      <nav className="flex absolute w-full bg-neutral-950/50 items-center justify-between px-8 py-4 z-10">
+      <nav
+        className={`flex ${
+          locationHome ? "absolute bg-neutral-950/50" : "relative bg-zinc-900"
+        } w-full  items-center justify-between px-8 py-4 z-10`}
+      >
         <div>
-          <img src={logo} alt="logo" className="w-[150px]" />
+          <NavLink to="/">
+            <img src={logo} alt="logo" className="w-[150px]" />
+          </NavLink>
         </div>
         <menu className="hidden md:flex text-lg mt-2">
           <ul className="flex gap-6 text-white">
-            <li>About Us</li>
+            <li>
+              <NavLink to="/aboutus">About Us</NavLink>
+            </li>
             <li>Menu</li>
             <li>Gallery</li>
-            <li>Contacts</li>
+            <li>
+              <NavLink to="/contacts">Contacts</NavLink>
+            </li>
           </ul>
         </menu>
         <div className="block md:hidden" onClick={() => setOpen(true)}>

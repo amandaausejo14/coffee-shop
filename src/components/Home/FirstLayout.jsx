@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 function FirstLayout({ img1, img2, img3, imgPosition, title, paragraph, btnText }) {
   const isImagesLeft = imgPosition === "left";
   return (
@@ -9,7 +10,10 @@ function FirstLayout({ img1, img2, img3, imgPosition, title, paragraph, btnText 
               <div className="max-w-[500px] flex flex-col gap-4 text-center items-center md:items-start">
                 <h1 className="text-2xl font-bold text-center md:text-3xl md:text-left">{title}</h1>
                 <p className="md:text-left">{paragraph}</p>
-                <button className="border border-black p-2 rounded-xl">{btnText}</button>
+                <button className="border border-black p-2 rounded-xl">
+                  {" "}
+                  <NavLink to="/aboutus">{btnText}</NavLink>
+                </button>
               </div>
               <div className="max-w-[610px] grid grid-cols-2 grid-rows-2 gap-2">
                 <img src={img1} alt="alpaca" className="row-span-2 w-full h-full object-cover" />
@@ -31,7 +35,10 @@ function FirstLayout({ img1, img2, img3, imgPosition, title, paragraph, btnText 
               <div className="max-w-[500px] flex flex-col gap-4 text-center items-center md:items-end">
                 <h1 className="text-2xl font-bold text-center md:text-3xl md:text-left">{title}</h1>
                 <p className="md:text-end">{paragraph}</p>
-                <button className="border border-white p-2 rounded-xl">{btnText}</button>
+                <button className="border border-white p-2 rounded-xl">
+                  {" "}
+                  <NavLink to="/aboutus">{btnText}</NavLink>
+                </button>
               </div>
             </div>
           </div>

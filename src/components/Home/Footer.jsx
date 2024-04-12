@@ -1,4 +1,5 @@
 import Logo2 from "../../assets/logo2.png";
+import { NavLink } from "react-router-dom";
 function Footer() {
   return (
     <footer>
@@ -11,7 +12,9 @@ function Footer() {
           <menu>
             <span className="font-medium">Pages</span>
             <ul className="flex flex-col">
-              <li>About Us</li>
+              <li>
+                <NavLink to="/aboutus">About Us</NavLink>
+              </li>
               <li>Menu</li>
               <li>Gallery</li>
               <li>Contacts</li>
