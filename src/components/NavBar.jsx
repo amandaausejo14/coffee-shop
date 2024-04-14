@@ -44,10 +44,18 @@ function NavBar() {
             </div>
             <nav className="flex justify-center">
               <ul className="flex flex-col gap-4 text-center">
-                <li>About Us</li>
+                <li>
+                  <NavLink to="/aboutus" onClick={() => setOpen(false)}>
+                    About Us
+                  </NavLink>
+                </li>
                 <li>Menu</li>
                 <li>Gallery</li>
-                <li>Contacts</li>
+                <li>
+                  <NavLink to="/contacts" onClick={() => setOpen(false)}>
+                    Contacts
+                  </NavLink>
+                </li>
               </ul>
             </nav>
           </div>

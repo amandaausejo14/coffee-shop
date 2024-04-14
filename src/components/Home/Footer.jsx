@@ -17,7 +17,9 @@ function Footer() {
               </li>
               <li>Menu</li>
               <li>Gallery</li>
-              <li>Contacts</li>
+              <li>
+                <NavLink to="/contacts">Contacts</NavLink>
+              </li>
             </ul>
           </menu>
 
