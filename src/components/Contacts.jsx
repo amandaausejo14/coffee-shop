@@ -3,19 +3,25 @@ import { CiMail } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
 function Contacts() {
   return (
-    <div className="w-full">
-      <div className="grid h-full gap-12 px-4 py-8 lg:grid-cols-2 items-center">
-        <div className="flex flex-col items-center gap-4">
-          <h1 className="text-3xl font-semibold">Get in touch with us</h1>
-          <div className="flex flex-col items-center gap-2">
-            <CiMail className="w-8 h-8" />
-            <p>HELLO@GMAIL.COM</p>
+    <div className="w-full flex flex-col items-center">
+      <div className="lg:m-[2rem]">
+        <h1 className="text-3xl font-semibold lg:font-bold lg:text-5xl">Get in touch with us</h1>
+      </div>
+
+      <div className="grid h-full gap-12 px-4 py-8 lg:grid-cols-2 items-center lg:gap-[10rem]">
+        <div className="flex flex-col items-center gap-4 lg:grid grid-cols-2 lg:items-start lg:gap-8">
+          <div className="lg:flex flex-col gap-8">
+            <div className="flex flex-col items-center gap-2">
+              <CiMail className="w-8 h-8" />
+              <p>HELLO@GMAIL.COM</p>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <CiPhone className="w-8 h-8" />
+              <p>+48 596 568 256 22</p>
+            </div>
           </div>
-          <div className="flex flex-col items-center gap-2">
-            <CiPhone className="w-8 h-8" />
-            <p>+48 596 568 256 22</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
+
+          <div className="flex flex-col items-center gap-2 ">
             <CiLocationOn className="w-8 h-8" />
             <p>HELLO 52/43, 80-891 GDAŃSK</p>
             <div>
@@ -32,7 +38,7 @@ function Contacts() {
           </div>
         </div>
         <div className="md:flex flex-col items-center">
-          <div className="flex flex-col shadow-2xl p-8 rounded-2xl gap-4 md:w-[70%]">
+          <div className="flex flex-col shadow-2xl p-8 rounded-2xl gap-4 md:w-[100%]">
             <form action="" method="get" className="flex flex-col gap-2">
               <label for="name">First Name:</label>
               <input type="text" id="name" name="user_name" className="border rounded-md" />
