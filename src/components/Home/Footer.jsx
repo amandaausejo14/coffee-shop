@@ -2,7 +2,7 @@ import Logo2 from "../../assets/logo2.png";
 import { NavLink } from "react-router-dom";
 function Footer() {
   return (
-    <footer>
+    <footer className="border-t-[1px] sticky top-[100vh]">
       <div className="w-full flex py-8 px-4 justify-center">
         <div className="flex flex-col items-center text-center gap-2 md:flex-row md:gap-[4rem] md:text-left md:items-stretch lg:gap-[6rem]">
           <div className="flex md:items-center">
