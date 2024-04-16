@@ -5,6 +5,7 @@ import AboutPage from "./components/AboutPage";
 import Contacts from "./components/Contacts";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Home/Footer";
+import LogIn from "./components/LogIn";
 function App() {
   return (
     <div className="h-screen">
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutPage />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/login" element={<LogIn />} />
       </Routes>
       <Footer />
     </div>

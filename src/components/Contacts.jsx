@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
-import ContactForm from "./Home/ContactForm";
+import ContactForm from "./ContactForm";
 function Contacts() {
   return (
     <div className="w-full flex flex-col items-center">

@@ -1,5 +1,8 @@
 import { useState } from "react";
-function ContactForm({ formData2, setFormData }) {
+const { VITE_EMAIL_FORM_KEY } = import.meta.env;
+
+function ContactForm() {
+  //message to show when form is sent
   const [result, setResult] = useState("");
 
   const onSubmit = async (event) => {
@@ -7,8 +10,7 @@ function ContactForm({ formData2, setFormData }) {
     console.log(event);
     setResult("Sending....");
     const formData = new FormData(event.target);
-    console.log(formData);
-    formData.append("access_key", "25a52a42-8c2d-47b2-b781-1c508c2f3b96");
+    formData.append("access_key", VITE_EMAIL_FORM_KEY);
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       body: formData,

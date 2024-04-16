@@ -28,6 +28,9 @@ function NavBar() {
             <li>
               <NavLink to="/contacts">Contacts</NavLink>
             </li>
+            <li>
+              <NavLink to="/login">Log In</NavLink>
+            </li>
           </ul>
         </menu>
         <div className="block md:hidden" onClick={() => setOpen(true)}>
@@ -54,6 +57,11 @@ function NavBar() {
                 <li>
                   <NavLink to="/contacts" onClick={() => setOpen(false)}>
                     Contacts
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/login" onClick={() => setOpen(false)}>
+                    Log In
                   </NavLink>
                 </li>
               </ul>
