@@ -20,6 +20,9 @@ function Footer() {
               <li>
                 <NavLink to="/contacts">Contacts</NavLink>
               </li>
+              <li>
+                <NavLink to="/login-signup">Log In</NavLink>
+              </li>
             </ul>
           </menu>
 

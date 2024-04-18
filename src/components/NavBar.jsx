@@ -29,7 +29,7 @@ function NavBar() {
               <NavLink to="/contacts">Contacts</NavLink>
             </li>
             <li>
-              <NavLink to="/login">Log In</NavLink>
+              <NavLink to="/login-signup">Log In</NavLink>
             </li>
           </ul>
         </menu>
@@ -60,7 +60,7 @@ function NavBar() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/login" onClick={() => setOpen(false)}>
+                  <NavLink to="/login-signup" onClick={() => setOpen(false)}>
                     Log In
                   </NavLink>
                 </li>
