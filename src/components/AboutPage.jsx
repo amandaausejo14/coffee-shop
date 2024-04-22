@@ -1,12 +1,12 @@
-import Owner from "../assets/owner.jpg";
+import Owner from "../assets/owner3.jpg";
 
 function AboutPage() {
   return (
-    <div className="w-full flex flex-col">
-      <div className="grid justify-items-center gap-4 lg:grid-cols-2 lg:items-center">
-        <div>
-          <img src={Owner} alt="owner" className="h-full w-full" />
-        </div>
+    <div className="w-full flex flex-col lg:h-[69%]">
+      <div className="grid justify-items-center gap-4 lg:grid-cols-2 lg:items-center lg:h-full">
+        <figure className="h-full w-full container">
+          <img src={Owner} alt="owner" className="h-full w-full object-cover" />
+        </figure>
         <div className="flex flex-col text-center w-4/5 gap-2 py-4  lg:text-left lg:gap-4">
           <h1 className="font-semibold text-2xl lg:font-bold lg:text-5xl">Our Story</h1>
           <p className="lg:w-4/5">
