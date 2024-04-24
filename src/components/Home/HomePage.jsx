@@ -8,7 +8,7 @@ import Sea from "../../assets/sea.jpg";
 import ShopImg1 from "../../assets/shopImg1.jpg";
 import ShopImg2 from "../../assets/shopImg2.jpg";
 import ShopImg3 from "../../assets/shopImg3.jpg";
-import Footer from "./Footer.jsx";
+import Footer from "../Footer.jsx";
 function HomePage() {
   return (
     <div>

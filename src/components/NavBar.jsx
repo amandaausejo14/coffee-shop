@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "../../img/Logo.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { NavLink, useLocation } from "react-router-dom";
-function NavBar() {
+function NavBar({ user }) {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const locationHome = location.pathname === "/";
@@ -23,14 +23,26 @@ function NavBar() {
             <li>
               <NavLink to="/aboutus">About Us</NavLink>
             </li>
-            <li>Menu</li>
-            <li>Gallery</li>
+            {user ? (
+              <li>
+                <NavLink to="/menu">Menu</NavLink>
+              </li>
+            ) : (
+              ""
+            )}
+
             <li>
               <NavLink to="/contacts">Contacts</NavLink>
             </li>
-            <li>
-              <NavLink to="/login-signup">Log In</NavLink>
-            </li>
+            {user ? (
+              <li>
+                <NavLink to="/menu">Log Out</NavLink>
+              </li>
+            ) : (
+              <li>
+                <NavLink to="/login-signup">Log In</NavLink>
+              </li>
+            )}
           </ul>
         </menu>
         <div className="block md:hidden" onClick={() => setOpen(true)}>
@@ -52,18 +64,29 @@ function NavBar() {
                     About Us
                   </NavLink>
                 </li>
-                <li>Menu</li>
+                {user ? (
+                  <li>
+                    <NavLink to="/menu">Menu</NavLink>
+                  </li>
+                ) : (
+                  ""
+                )}
+
                 <li>Gallery</li>
                 <li>
                   <NavLink to="/contacts" onClick={() => setOpen(false)}>
                     Contacts
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/login-signup" onClick={() => setOpen(false)}>
-                    Log In
-                  </NavLink>
-                </li>
+                {user ? (
+                  <li>
+                    <NavLink to="/menu">Log Out</NavLink>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink to="/login-signup">Log In</NavLink>
+                  </li>
+                )}
               </ul>
             </nav>
           </div>

@@ -1,4 +1,4 @@
-import Cup from "../../assets/cup.png";
+import Cup from "../assets/cup.png";
 function NotFound() {
   return (
     <div className="flex gap-4 justify-center items-center m-4 lg:m-16 lg:gap-10">

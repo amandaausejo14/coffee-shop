@@ -1,6 +1,6 @@
-import Logo2 from "../../assets/logo2.png";
+import Logo2 from "../assets/logo2.png";
 import { NavLink } from "react-router-dom";
-function Footer() {
+function Footer({ user }) {
   return (
     <footer className="border-t-[1px] sticky top-[100vh]">
       <div className="w-full flex py-8 px-4 justify-center">
@@ -15,14 +15,26 @@ function Footer() {
               <li>
                 <NavLink to="/aboutus">About Us</NavLink>
               </li>
-              <li>Menu</li>
-              <li>Gallery</li>
+              {user ? (
+                <li>
+                  <NavLink to="/menu">Menu</NavLink>
+                </li>
+              ) : (
+                ""
+              )}
+
               <li>
                 <NavLink to="/contacts">Contacts</NavLink>
               </li>
-              <li>
-                <NavLink to="/login-signup">Log In</NavLink>
-              </li>
+              {user ? (
+                <li>
+                  <NavLink to="/menu">Log Out</NavLink>
+                </li>
+              ) : (
+                <li>
+                  <NavLink to="/login-signup">Log In</NavLink>
+                </li>
+              )}
             </ul>
           </menu>
 
