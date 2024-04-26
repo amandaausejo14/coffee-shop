@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import Coffee from "../assets/coffee-log.png";
 import { useState } from "react";
-
+const { VITE_URL } = import.meta.env;
+console.log(URL);
 function LogIn() {
   const [signUp, setSignUp] = useState(false);
+  const google = () => {
+    window.open(VITE_URL, "_self");
+  };
   return (
     <div className="flex h-[70%] justify-center items-center">
       <div className="grid items-center mx-2 my-8 md:grid-cols-2 md:mx-6 lg:gap-16">
@@ -35,7 +39,7 @@ function LogIn() {
           </form>
           <div className="flex flex-col items-center gap-4">
             <p>or</p>
-            <div className="flex gap-2 border-2 p-2 rounded-xl">
+            <div className="flex gap-2 border-2 p-2 rounded-xl" onClick={google}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="" />
               <p>Sign Up With Google</p>
             </div>
