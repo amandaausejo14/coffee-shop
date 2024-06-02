@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Coffee from "../assets/coffee-log.png";
 import { useState } from "react";
 const { VITE_URL } = import.meta.env;
-console.log(URL);
 function LogIn() {
   const [signUp, setSignUp] = useState(false);
   const google = () => {
@@ -27,12 +26,12 @@ function LogIn() {
             <input type="email" name="email" className="border rounded-md" required />
             <label>Password:</label>
             <input type="password" name="password" className="border rounded-md" required />
-            {signUp && (
+            {/* {signUp && (
               <>
                 <label>Confirm Password:</label>
                 <input type="password" name="password" className="border rounded-md" required />
               </>
-            )}
+            )} */}
             <button className="bg-zinc-900 text-white w-[130px] p-1.5 rounded-xl" type="submit">
               {signUp ? "Sign Up" : "Log In"}
             </button>
@@ -41,7 +40,7 @@ function LogIn() {
             <p>or</p>
             <div className="flex gap-2 border-2 p-2 rounded-xl" onClick={google}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="" />
-              <p>Sign Up With Google</p>
+              <p>{signUp ? "Sign Up with Google" : "Log In with Google"}</p>
             </div>
             <div className="flex gap-2">
               <p>{signUp ? "Already a Member?" : "New Here?"}</p>

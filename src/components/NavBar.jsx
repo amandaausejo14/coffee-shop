@@ -6,6 +6,11 @@ function NavBar({ user }) {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const locationHome = location.pathname === "/";
+
+  const logOutGoogle = () => {
+    window.open("http://localhost:3000/auth/logout", "_self");
+  };
+
   return (
     <>
       <nav
@@ -36,7 +41,7 @@ function NavBar({ user }) {
             </li>
             {user ? (
               <li>
-                <NavLink to="/menu">Log Out</NavLink>
+                <NavLink onClick={logOutGoogle}>Log Out</NavLink>
               </li>
             ) : (
               <li>
