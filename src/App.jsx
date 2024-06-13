@@ -9,10 +9,9 @@ import LogInSignUp from "./components/LogInSignUp";
 import NotFound from "./components/NotFound";
 import Menu from "./components/Menu";
 import { useEffect, useContext } from "react";
-import { UserProvider } from "./components/user-context/context";
-import UserContext from "./components/user-context/context";
+import { useUser, UserProvider } from "./components/user-context/context";
 function App() {
-  const user = useContext(UserContext);
+  const { user, setUser } = useUser();
   useEffect(() => {
     const getUser = () => {
       fetch("http://localhost:3000/auth/login/success", {
@@ -41,20 +40,18 @@ function App() {
   console.log(user);
 
   return (
-    <UserProvider>
-      <div className="h-screen">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/aboutus" element={<AboutPage />} />
-          <Route path="/contacts" element={<Contacts />} />
-          <Route path="/login-signup" element={user ? <HomePage /> : <LogInSignUp />} />
-          <Route path="/menu" element={user ? <Menu /> : <LogInSignUp />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer user={user} />
-      </div>
-    </UserProvider>
+    <div className="h-screen">
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/aboutus" element={<AboutPage />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/login-signup" element={user ? <HomePage /> : <LogInSignUp />} />
+        <Route path="/menu" element={user ? <Menu /> : <LogInSignUp />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
 

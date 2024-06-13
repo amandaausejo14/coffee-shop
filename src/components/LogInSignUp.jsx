@@ -2,56 +2,53 @@ import axios from "axios";
 import Coffee from "../assets/coffee-log.png";
 import { useState } from "react";
 const { VITE_URL } = import.meta.env;
-function LogIn() {
+import { useUser } from "./user-context/context";
+
+function LogInSignUp() {
   const [signUpForm, setSignUpForm] = useState(false);
   const [message, setMessage] = useState("");
-  //sign up data
   const [signUpData, setSignUpData] = useState({
     username: "",
     email: "",
     password: "",
   });
-  //user Context
+  const { login } = useUser();
 
-  // sign up submition
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = axios.post(`http://localhost:3000/auth/signup`, {
+      const response = await axios.post("http://localhost:3000/auth/signup", {
         user_name: signUpData.username,
         email: signUpData.email,
         password: signUpData.password,
       });
-      console.log(response);
-      setUser({
-        user_name: signUpData.username,
-        email: signUpData.email,
-      });
-      setMessage("ok");
+      login({ user_name: signUpData.username, email: signUpData.email }, response.data.token);
+      setMessage("Sign up successful");
     } catch (error) {
       console.log(error);
-      setMessage(error);
+      setMessage(error.response.data.message || "Sign up failed");
     }
   };
 
   const handleLogInSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = axios.post(`http://localhost:3000/auth/login`, {
+      const response = await axios.post("http://localhost:3000/auth/login", {
         email: signUpData.email,
         password: signUpData.password,
       });
-      console.log(response);
-      setMessage("ok");
+      login(response.data.user, response.data.token);
+      setMessage("Log in successful");
     } catch (error) {
       console.log(error);
-      setMessage(error);
+      setMessage(error.response.data.message || "Log in failed");
     }
   };
-  // sign up / in with google
+
   const google = () => {
     window.open(VITE_URL, "_self");
   };
+
   return (
     <div className="flex h-[70%] justify-center items-center">
       <div className="grid items-center mx-2 my-8 md:grid-cols-2 md:mx-6 lg:gap-16">
@@ -127,4 +124,4 @@ function LogIn() {
   );
 }
 
-export default LogIn;
+export default LogInSignUp;

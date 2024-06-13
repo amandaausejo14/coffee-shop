@@ -2,18 +2,18 @@ import { useState, useContext } from "react";
 import logo from "../../img/Logo.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { NavLink, useLocation } from "react-router-dom";
-import UserContext from "./user-context/context";
+import { useUser } from "./user-context/context";
 
 function NavBar() {
   //user Context
-  const [user, setUser] = useContext(UserContext);
+  const { user, logout } = useUser();
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const locationHome = location.pathname === "/";
 
   const logOut = () => {
     window.open("http://localhost:3000/auth/logout", "_self");
-    setUser(null);
+    logout();
   };
 
   return (
