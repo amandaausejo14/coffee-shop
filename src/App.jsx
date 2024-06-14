@@ -8,13 +8,14 @@ import Footer from "./components/Footer";
 import LogInSignUp from "./components/LogInSignUp";
 import NotFound from "./components/NotFound";
 import Menu from "./components/Menu";
-import { useEffect, useContext } from "react";
-import { useUser, UserProvider } from "./components/user-context/context";
+import { useEffect } from "react";
+import { useUser } from "./components/user-context/context";
+const { VITE_URL_BACK_END } = import.meta.env;
 function App() {
   const { user, setUser } = useUser();
   useEffect(() => {
     const getUser = () => {
-      fetch("http://localhost:3000/auth/login/success", {
+      fetch(`https://coffee-shop-back-end.vercel.app/auth/login/success`, {
         method: "GET",
         credentials: "include",
         headers: {

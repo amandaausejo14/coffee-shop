@@ -1,7 +1,8 @@
 import axios from "axios";
 import Coffee from "../assets/coffee-log.png";
 import { useState } from "react";
-const { VITE_URL } = import.meta.env;
+import { useNavigate } from "react-router-dom";
+const { VITE_URL_BACK_END } = import.meta.env;
 import { useUser } from "./user-context/context";
 
 function LogInSignUp() {
@@ -13,44 +14,46 @@ function LogInSignUp() {
     password: "",
   });
   const { login } = useUser();
-
+  //useNavigate to send home after the log in
+  const navigate = useNavigate();
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/auth/signup", {
+      await axios.post(`${VITE_URL_BACK_END}/auth/signup`, {
         user_name: signUpData.username,
         email: signUpData.email,
         password: signUpData.password,
       });
-      login({ user_name: signUpData.username, email: signUpData.email }, response.data.token);
       setMessage("Sign up successful");
+      setSignUpForm(false);
     } catch (error) {
       console.log(error);
-      setMessage(error.response.data.message || "Sign up failed");
+      setMessage(error.response.data || "Sign up failed");
     }
   };
 
   const handleLogInSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/auth/login", {
+      const response = await axios.post(`${VITE_URL_BACK_END}/auth/login`, {
         email: signUpData.email,
         password: signUpData.password,
       });
       login(response.data.user, response.data.token);
       setMessage("Log in successful");
+      navigate("/");
     } catch (error) {
-      console.log(error);
-      setMessage(error.response.data.message || "Log in failed");
+      console.log(error.response);
+      setMessage(error.response.data || "Log in failed");
     }
   };
 
   const google = () => {
-    window.open(VITE_URL, "_self");
+    window.open(`${VITE_URL_BACK_END}/auth/google`, "_self");
   };
 
   return (
-    <div className="flex h-[70%] justify-center items-center">
+    <div className="flex justify-center items-center">
       <div className="grid items-center mx-2 my-8 md:grid-cols-2 md:mx-6 lg:gap-16">
         <figure className="sm: hidden md:block lg:min-w-[500px]">
           <img src={Coffee} alt="coffee" className="md: w-full" />
@@ -69,6 +72,7 @@ function LogInSignUp() {
                   onChange={(e) => {
                     setSignUpData({ ...signUpData, username: e.target.value });
                   }}
+                  autoComplete="username"
                 />
               </>
             )}
@@ -81,6 +85,7 @@ function LogInSignUp() {
               onChange={(e) => {
                 setSignUpData({ ...signUpData, email: e.target.value });
               }}
+              autoComplete={signUpForm ? "new-email" : "email"}
             />
             <label>Password:</label>
             <input
@@ -89,14 +94,25 @@ function LogInSignUp() {
               className="border rounded-md"
               required
               onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })}
+              autoComplete={signUpForm ? "new-password" : "current-password"}
             />
-            <button
-              className="bg-zinc-900 text-white w-[130px] p-1.5 rounded-xl"
-              type="submit"
-              onClick={signUpForm ? handleSignUpSubmit : handleLogInSubmit}
-            >
-              {signUpForm ? "Sign Up" : "Log In"}
-            </button>
+            {signUpForm ? (
+              <button
+                className="bg-zinc-900 text-white w-[130px] p-1.5 rounded-xl"
+                type="submit"
+                onClick={handleSignUpSubmit}
+              >
+                Sign Up
+              </button>
+            ) : (
+              <button
+                className="bg-zinc-900 text-white w-[130px] p-1.5 rounded-xl"
+                type="submit"
+                onClick={handleLogInSubmit}
+              >
+                Log In
+              </button>
+            )}
           </form>
           <div className="flex flex-col items-center gap-4">
             <p>or</p>
@@ -104,7 +120,7 @@ function LogInSignUp() {
               <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="" />
               <p>{signUpForm ? "Sign Up with Google" : "Log In with Google"}</p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 cursor-pointer">
               <p>{signUpForm ? "Already a Member?" : "New Here?"}</p>
               {signUpForm ? (
                 <button onClick={() => setSignUpForm(false)}>Log In</button>

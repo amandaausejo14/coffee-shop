@@ -9,7 +9,6 @@ export const UserProvider = ({ children }) => {
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
   });
-  const [isLoggedIn, setIsLoggedIn] = useState(!!user);
 
   useEffect(() => {
     if (user) {
@@ -21,13 +20,11 @@ export const UserProvider = ({ children }) => {
 
   const login = (userData) => {
     setUser(userData);
-    setIsLoggedIn(true);
   };
 
   const logout = () => {
     setUser(null);
-    setIsLoggedIn(false);
   };
 
-  return <UserContext.Provider value={{ user, isLoggedIn, login, logout }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ user, login, logout }}>{children}</UserContext.Provider>;
 };
