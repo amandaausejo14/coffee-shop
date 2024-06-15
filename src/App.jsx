@@ -15,7 +15,7 @@ function App() {
   const { user, setUser } = useUser();
   useEffect(() => {
     const getUser = () => {
-      fetch("http://localhost:3000/auth/login/success", {
+      fetch(`${VITE_URL_BACK_END}/auth/login/success`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -26,6 +26,7 @@ function App() {
       })
         .then((response) => {
           if (response.status === 200) return response.json();
+          console.log(response);
           throw new Error("authentication has been failed!");
         })
         .then((resObject) => {
@@ -37,7 +38,6 @@ function App() {
     };
     getUser();
   }, []);
-
   console.log(user);
 
   return (
