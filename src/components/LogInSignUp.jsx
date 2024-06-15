@@ -19,7 +19,7 @@ function LogInSignUp() {
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`https://coffee-shop-back-end.vercel.app/auth/signup`, {
+      await axios.post(`${VITE_URL_BACK_END}/auth/signup`, {
         user_name: signUpData.username,
         email: signUpData.email,
         password: signUpData.password,
@@ -35,7 +35,7 @@ function LogInSignUp() {
   const handleLogInSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`https://coffee-shop-back-end.vercel.app/auth/login`, {
+      const response = await axios.post(`${VITE_URL_BACK_END}/auth/login`, {
         email: signUpData.email,
         password: signUpData.password,
       });
