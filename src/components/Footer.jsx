@@ -1,6 +1,13 @@
 import Logo2 from "../assets/logo2.png";
 import { NavLink } from "react-router-dom";
-function Footer({ user }) {
+import { useUser } from "./user-context/context";
+function Footer() {
+  const { user, logout } = useUser();
+  const logOut = (e) => {
+    e.preventDefault();
+    window.open(`${VITE_URL_BACK_END}/auth/logout`, "_self");
+    logout();
+  };
   return (
     <footer className="border-t-[1px] sticky top-[100vh]">
       <div className="w-full flex py-8 px-4 justify-center">
@@ -15,20 +22,17 @@ function Footer({ user }) {
               <li>
                 <NavLink to="/aboutus">About Us</NavLink>
               </li>
-              {user ? (
-                <li>
-                  <NavLink to="/menu">Menu</NavLink>
-                </li>
-              ) : (
-                ""
-              )}
+
+              <li>
+                <NavLink to="/shop">Shop</NavLink>
+              </li>
 
               <li>
                 <NavLink to="/contacts">Contacts</NavLink>
               </li>
               {user ? (
                 <li>
-                  <NavLink to="/menu">Log Out</NavLink>
+                  <NavLink onClick={logOut}>Log Out</NavLink>
                 </li>
               ) : (
                 <li>

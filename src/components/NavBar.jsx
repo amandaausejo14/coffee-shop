@@ -36,7 +36,7 @@ function NavBar() {
             </li>
             {user ? (
               <li>
-                <NavLink to="/menu">Menu</NavLink>
+                <NavLink to="/shop">Shop</NavLink>
               </li>
             ) : (
               ""
@@ -77,7 +77,7 @@ function NavBar() {
                 </li>
                 {user ? (
                   <li>
-                    <NavLink to="/menu">Menu</NavLink>
+                    <NavLink to="/shop">Shop</NavLink>
                   </li>
                 ) : (
                   ""
@@ -91,7 +91,7 @@ function NavBar() {
                 </li>
                 {user ? (
                   <li>
-                    <NavLink to="/menu">Log Out</NavLink>
+                    <NavLink onClick={logOut}>Log Out</NavLink>
                   </li>
                 ) : (
                   <li>

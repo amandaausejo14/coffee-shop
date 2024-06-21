@@ -1,7 +1,7 @@
 import axios from "axios";
 import Coffee from "../assets/coffee-log.png";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 const { VITE_URL_BACK_END } = import.meta.env;
 import { useUser } from "./user-context/context";
 
@@ -16,6 +16,64 @@ function LogInSignUp() {
   const { login } = useUser();
   //useNavigate to send home after the log in
   const navigate = useNavigate();
+  const location = useLocation();
+  // get user info from google
+  // useEffect(() => {
+  //   const getUser = () => {
+  //     fetch(`http://localhost:3000/auth/login/success`, {
+  //       method: "GET",
+  //       credentials: "include",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //         "Access-Control-Allow-Credentials": true,
+  //       },
+  //     })
+  //       .then((response) => {
+  //         if (response.status === 200) return response.json();
+  //         console.log(`response` + response);
+  //         throw new Error("authentication has been failed!");
+  //       })
+  //       .then((resObject) => {
+  //         console.log(resObject);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   };
+  //   getUser();
+  // }, []);
+
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     console.log("sono qui");
+  //     try {
+  //       const response = await fetch(`${VITE_URL_BACK_END}/auth/login/success`, {
+  //         method: "GET",
+  //         credentials: "include",
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //           "Access-Control-Allow-Credentials": true,
+  //         },
+  //       });
+
+  //       if (response.status === 200) {
+  //         const resObject = await response.json();
+  //         console.log(`response` + resObject);
+  //         login(resObject.user);
+  //         navigate("/");
+  //       } else {
+  //         throw new Error("Authentication has failed!");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //     }
+  //   };
+
+  //   fetchUser();
+  // }, [location, login, navigate]);
+
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -116,7 +174,7 @@ function LogInSignUp() {
           </form>
           <div className="flex flex-col items-center gap-4">
             <p>or</p>
-            <div className="flex gap-2 border-2 p-2 rounded-xl" onClick={google}>
+            <div className="flex gap-2 border-2 p-2 rounded-xl cursor-pointer" onClick={google}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="" />
               <p>{signUpForm ? "Sign Up with Google" : "Log In with Google"}</p>
             </div>
