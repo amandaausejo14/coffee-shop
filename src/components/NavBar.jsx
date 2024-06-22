@@ -1,8 +1,10 @@
 import { useState } from "react";
 import logo from "../../img/Logo.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { FaShoppingCart } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import { useUser } from "./user-context/context";
+
 const { VITE_URL_BACK_END } = import.meta.env;
 function NavBar() {
   //user Context
@@ -29,7 +31,7 @@ function NavBar() {
             <img src={logo} alt="logo" className="w-[150px]" />
           </NavLink>
         </div>
-        <menu className="hidden md:flex text-lg mt-2">
+        <menu className="hidden md:flex text-lg mt-2 gap-4">
           <ul className="flex gap-6 text-white">
             <li>
               <NavLink to="/aboutus">About Us</NavLink>
@@ -55,9 +57,17 @@ function NavBar() {
               </li>
             )}
           </ul>
+          <div className="relative">
+            <span className="text-white px-1.5 bg-red-500 rounded-full absolute right-2 top-2">0</span>
+            <FaShoppingCart size={30} className="color text-white"></FaShoppingCart>
+          </div>
         </menu>
-        <div className="block md:hidden" onClick={() => setOpen(true)}>
+        <div className="flex gap-4 md:hidden" onClick={() => setOpen(true)}>
           <AiOutlineMenu size={30} className="color text-white" />
+          <div className="relative">
+            <span className="text-white px-1.5 bg-red-500 rounded-full absolute right-2 top-2">0</span>
+            <FaShoppingCart size={30} className="color text-white"></FaShoppingCart>
+          </div>
         </div>
       </nav>
       {/* mobile menu */}
