@@ -36,13 +36,10 @@ function NavBar() {
             <li>
               <NavLink to="/aboutus">About Us</NavLink>
             </li>
-            {user ? (
-              <li>
-                <NavLink to="/shop">Shop</NavLink>
-              </li>
-            ) : (
-              ""
-            )}
+
+            <li>
+              <NavLink to="/shop">Shop</NavLink>
+            </li>
 
             <li>
               <NavLink to="/contacts">Contacts</NavLink>
@@ -85,13 +82,10 @@ function NavBar() {
                     About Us
                   </NavLink>
                 </li>
-                {user ? (
-                  <li>
-                    <NavLink to="/shop">Shop</NavLink>
-                  </li>
-                ) : (
-                  ""
-                )}
+
+                <li>
+                  <NavLink to="/shop">Shop</NavLink>
+                </li>
 
                 <li>Gallery</li>
                 <li>
