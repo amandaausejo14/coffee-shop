@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import HomePage from "./components/Home/HomePage";
 import AboutPage from "./components/AboutPage";
@@ -12,68 +13,16 @@ import { useUser } from "./components/user-context/context";
 import { useNavigate, useLocation } from "react-router-dom";
 import Shop from "./components/Shop";
 import Product from "./components/Product";
+import Cart from "./components/Cart";
+import ShopCheckOut from "./components/ShopCheckout";
+const { VITE_URL_BACK_END } = import.meta.env;
+
 function App() {
-  const { user } = useUser();
+  const { user, token } = useUser();
   const location = useLocation();
   const { login } = useUser();
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     console.log("sono qui"); //it gets untill here
-  //     try {
-  //       const response = await fetch(`${VITE_URL_BACK_END}/auth/login/success`, {
-  //         method: "GET",
-  //         credentials: "include",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //           "Access-Control-Allow-Credentials": true,
-  //         },
-  //       });
-  //       console.log(`qui`); //it doesnt get printed in the console
-  //       if (response.status === 200) {
-  //         const resObject = await response.json();
-  //         console.log(`response` + resObject);
-  //         login(resObject.user);
-  //         navigate("/");
-  //       } else {
-  //         throw new Error("Authentication has failed!");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching user data:", error);
-  //     }
-  //   };
 
-  //   fetchUser();
-  // }, [location, login, navigate]);
-
-  useEffect(() => {
-    console.log("sono qui");
-    const getUser = () => {
-      fetch(`http://localhost:3000/auth/login/success`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-        .then((response) => {
-          console.log("qui"); //it doent print this
-          if (response.status === 200) return response.json();
-          console.log(`response` + response); //doent print this neither
-          throw new Error("authentication has been failed!");
-        })
-        .then((resObject) => {
-          console.log(resObject);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getUser();
-  }, []);
   console.log(user);
 
   return (
@@ -86,6 +35,8 @@ function App() {
         <Route path="/login-signup" element={user ? <HomePage /> : <LogInSignUp />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<ShopCheckOut />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

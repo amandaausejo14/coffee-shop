@@ -2,13 +2,16 @@ import { useState } from "react";
 import logo from "../../img/Logo.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useUser } from "./user-context/context";
+import { useOrderItems } from "./orderItems-context/context";
 
 const { VITE_URL_BACK_END } = import.meta.env;
 function NavBar() {
   //user Context
   const { user, logout } = useUser();
+  //items
+  const { items } = useOrderItems();
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const locationHome = location.pathname === "/";
@@ -54,17 +57,21 @@ function NavBar() {
               </li>
             )}
           </ul>
-          <div className="relative">
-            <span className="text-white px-1.5 bg-red-500 rounded-full absolute right-2 top-2">0</span>
-            <FaShoppingCart size={30} className="color text-white"></FaShoppingCart>
-          </div>
+          <Link to="/cart">
+            <div className="relative">
+              <span className="text-white px-1.5 bg-red-500 rounded-full absolute right-2 top-2">{items.length}</span>
+              <FaShoppingCart size={30} className="color text-white"></FaShoppingCart>
+            </div>
+          </Link>
         </menu>
-        <div className="flex gap-4 md:hidden" onClick={() => setOpen(true)}>
-          <AiOutlineMenu size={30} className="color text-white" />
-          <div className="relative">
-            <span className="text-white px-1.5 bg-red-500 rounded-full absolute right-2 top-2">0</span>
-            <FaShoppingCart size={30} className="color text-white"></FaShoppingCart>
-          </div>
+        <div className="flex gap-4 md:hidden">
+          <AiOutlineMenu size={30} className="color text-white" onClick={() => setOpen(true)} />
+          <Link to="/cart">
+            <div className="relative">
+              <span className="text-white px-1.5 bg-red-500 rounded-full absolute right-2 top-2">{items.length}</span>
+              <FaShoppingCart size={30} className="color text-white"></FaShoppingCart>
+            </div>
+          </Link>
         </div>
       </nav>
       {/* mobile menu */}
@@ -86,8 +93,6 @@ function NavBar() {
                 <li>
                   <NavLink to="/shop">Shop</NavLink>
                 </li>
-
-                <li>Gallery</li>
                 <li>
                   <NavLink to="/contacts" onClick={() => setOpen(false)}>
                     Contacts

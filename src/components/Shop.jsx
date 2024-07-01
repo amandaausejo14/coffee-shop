@@ -15,7 +15,7 @@ function Shop() {
       });
   }, []);
 
-  console.log(products);
+  /// console.log(products);
   return (
     <div className="flex flex-col p-4 gap-6">
       <div className="flex flex-col text-center gap-2">

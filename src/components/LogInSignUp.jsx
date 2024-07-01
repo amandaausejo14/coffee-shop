@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const { VITE_URL_BACK_END } = import.meta.env;
 import { useUser } from "./user-context/context";
 
-function LogInSignUp() {
+function LogInSignUp({ state }) {
   const [signUpForm, setSignUpForm] = useState(false);
   const [message, setMessage] = useState("");
   const [signUpData, setSignUpData] = useState({
@@ -17,6 +17,10 @@ function LogInSignUp() {
   //useNavigate to send home after the log in
   const navigate = useNavigate();
   const location = useLocation();
+  const from = location.state?.from === "/cart" ? "/checkout" : "/";
+  console.log(location);
+  console.log(location.state?.from);
+  // const form = location.state?.pathname || "/";
   // get user info from google
   // useEffect(() => {
   //   const getUser = () => {
@@ -97,12 +101,13 @@ function LogInSignUp() {
         email: signUpData.email,
         password: signUpData.password,
       });
-      login(response.data.user, response.data.token);
+      const { user, token } = response.data;
+      login(user, token);
       setMessage("Log in successful");
-      navigate("/");
+      navigate(from);
     } catch (error) {
       console.log(error.response);
-      setMessage(error.response.data || "Log in failed");
+      setMessage(error.response || "Log in failed");
     }
   };
 
