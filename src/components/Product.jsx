@@ -1,43 +1,62 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CiCircleMinus } from "react-icons/ci";
-import { CiCirclePlus } from "react-icons/ci";
+import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
+import { useOrderItems } from "./orderItems-context/context";
 const { VITE_URL_BACK_END } = import.meta.env;
+
 const Product = () => {
-  //take the id
   const { id } = useParams();
-  const [product, setProduct] = useState();
+  const { addItem, removeItem, items } = useOrderItems();
+  const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const [stockLimitMessage, setStockLimitMessage] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${VITE_URL_BACK_END}/products/${id}`);
-        console.log(response);
         setProduct(response.data);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching product:", error);
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
-  //handle minus
   const handleMinus = () => {
-    if (quantity !== 0) {
+    if (quantity > 0) {
       setQuantity(quantity - 1);
       setStockLimitMessage("");
     }
   };
-  //handle plus
+
   const handlePlus = () => {
-    if (quantity >= product.stock_quantity) {
-      setStockLimitMessage("Maximum quantity available in stock");
-    } else {
+    if (quantity < product?.stock_quantity) {
       setQuantity(quantity + 1);
+      setStockLimitMessage("");
+    } else {
+      setStockLimitMessage("Maximum quantity available in stock");
     }
   };
+
+  const handleAddToCart = () => {
+    if (product && quantity > 0) {
+      addItem(product, quantity);
+
+      setQuantity(0);
+      setStockLimitMessage("");
+    } else {
+      console.log("Missing product or quantity.");
+    }
+  };
+
+  useEffect(() => {
+    console.log("Cart Items:", items);
+  }, [items]);
+
+  console.log(items.length);
+
   return (
     <div>
       {product && (
@@ -63,7 +82,7 @@ const Product = () => {
             <p>{product.description}</p>
           </div>
           <div className="flex flex-col gap-2">
-            <p>Caffee - {product.name}</p>
+            <p>Coffee - {product.name}</p>
             <div className="flex gap-4">
               <p>Quantity</p>
               <div className="flex gap-4 border-2 border-black-800 px-2">
@@ -82,7 +101,9 @@ const Product = () => {
               </div>
             )}
             <div className="mt-4">
-              <button className="text-white bg-black rounded-lg px-4 py-2">Add To Cart</button>
+              <button className="text-white bg-black rounded-lg px-4 py-2" onClick={handleAddToCart}>
+                Add To Cart
+              </button>
             </div>
           </div>
         </div>
