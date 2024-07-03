@@ -51,11 +51,9 @@ const Product = () => {
     }
   };
 
-  useEffect(() => {
-    console.log("Cart Items:", items);
-  }, [items]);
-
-  console.log(items.length);
+  // useEffect(() => {
+  //   // console.log("Cart Items:", items);
+  // }, [items]);
 
   return (
     <div>

@@ -17,10 +17,7 @@ function LogInSignUp({ state }) {
   //useNavigate to send home after the log in
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from === "/cart" ? "/checkout" : "/";
-  console.log(location);
-  console.log(location.state?.from);
-  // const form = location.state?.pathname || "/";
+  const from = location.state?.from === "/cart" ? "/cart" : "/";
   // get user info from google
   // useEffect(() => {
   //   const getUser = () => {

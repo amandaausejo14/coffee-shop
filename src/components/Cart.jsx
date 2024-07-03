@@ -5,11 +5,12 @@ const { VITE_URL_BACK_END } = import.meta.env;
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useUser } from "./user-context/context";
+import PayButton from "./PayButton";
 const Cart = () => {
   const location = useLocation();
   const { items, removeItem, updateItemQuantity } = useOrderItems();
   const { user } = useUser();
-  console.log(user);
+  // console.log(user);
   const [totalPrice, setTotalPrice] = useState();
 
   useEffect(() => {
@@ -95,9 +96,12 @@ const Cart = () => {
             <p>{totalPrice}€</p>
           </div>
         </div>
-        <Link to={user ? `/checkout` : "/login-signup"} state={{ from: location.pathname }}>
-          <button className="flex border m-4 justify-between p-2 bg-black text-white">To the payment</button>
-        </Link>
+        {!user && (
+          <Link to={user ? `/checkout` : "/login-signup"} state={{ from: location.pathname }}>
+            <button className="flex border m-4 justify-between p-2 bg-black text-white">Log In To check out</button>
+          </Link>
+        )}
+        {user && <PayButton items={items} user={user} />}
       </div>
     </section>
   );

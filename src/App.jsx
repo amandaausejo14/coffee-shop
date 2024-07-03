@@ -15,6 +15,7 @@ import Shop from "./components/Shop";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 import ShopCheckOut from "./components/ShopCheckout";
+import CheckOutSuccess from "./components/CheckoutSuccess";
 const { VITE_URL_BACK_END } = import.meta.env;
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
   const { login } = useUser();
   const navigate = useNavigate();
 
-  console.log(user);
+  //console.log(user);
 
   return (
     <div className="h-screen">
@@ -37,6 +38,7 @@ function App() {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<ShopCheckOut />} />
+        <Route path="/checkout-success" element={<CheckOutSuccess />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
