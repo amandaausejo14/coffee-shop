@@ -1,6 +1,7 @@
 import axios from "axios";
 const { VITE_URL_BACK_END } = import.meta.env;
 const PayButton = ({ items, user }) => {
+  console.log(items, user);
   const handleOnClick = async () => {
     try {
       const response = await axios.post(`${VITE_URL_BACK_END}/stripe/create-checkout-session`, {
