@@ -1,7 +1,8 @@
 import { useState } from "react";
-import logo from "../../img/Logo.png";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { FaShoppingCart } from "react-icons/fa";
+//import logo from "../../img/Logo.png";
+import { AiOutlineClose } from "react-icons/ai";
+import { CiShoppingCart, CiUser, CiMenuBurger } from "react-icons/ci";
+
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useUser } from "./user-context/context";
 import { useOrderItems } from "./orderItems-context/context";
@@ -24,20 +25,16 @@ function NavBar() {
 
   return (
     <>
-      <nav
-        className={`flex ${
-          locationHome ? "absolute bg-neutral-950/50" : "relative bg-zinc-900"
-        } w-full  items-center justify-between px-8 py-4 z-10`}
-      >
+      <nav className={`flex w-full  items-center justify-between px-8 py-4 z-10 xl:px-20 2xl:px-[10rem] absolute`}>
         <div>
           <NavLink to="/">
-            <img src={logo} alt="logo" className="w-[150px]" />
+            <p className="font-outfit font-semibold text-lg">COFFEESOUTH</p>
           </NavLink>
         </div>
-        <menu className="hidden md:flex text-lg mt-2 gap-4">
-          <ul className="flex gap-6 text-white">
+        <menu className="hidden md:flex text-lg mt-2 gap-4 font-outfit font-norma">
+          <ul className="flex gap-6 text-black">
             <li>
-              <NavLink to="/aboutus">About Us</NavLink>
+              <NavLink to="/aboutus">Our Story</NavLink>
             </li>
 
             <li>
@@ -57,14 +54,22 @@ function NavBar() {
               </li>
             )}
           </ul>
-          <Link to="/cart">
-            <div className="relative">
-              <span className="text-white px-1.5 bg-red-500 rounded-full absolute right-2 top-2">{items.length}</span>
-              <FaShoppingCart size={30} className="color text-white"></FaShoppingCart>
-            </div>
-          </Link>
         </menu>
-        <div className="flex gap-4 md:hidden">
+        <div>
+          <div className="flex gap-2">
+            <Link to="/login-signup">
+              <CiUser size={28} className="color text-black" />
+            </Link>
+            <Link to="/cart" className="relative">
+              <span className="text-white px-1.5 bg-red-500 rounded-full absolute right-[-4px] top-[-3px] text-sm">
+                {items.length}
+              </span>
+              <CiShoppingCart size={30} className="color text-black" />
+            </Link>
+            <CiMenuBurger size={27} className="color text-black md:hidden" onClick={() => setOpen(true)} />
+          </div>
+        </div>
+        {/* <div className="flex gap-4 md:hidden">
           <AiOutlineMenu size={30} className="color text-white" onClick={() => setOpen(true)} />
           <Link to="/cart">
             <div className="relative">
@@ -72,9 +77,9 @@ function NavBar() {
               <FaShoppingCart size={30} className="color text-white"></FaShoppingCart>
             </div>
           </Link>
-        </div>
+        </div> */}
       </nav>
-      {/* mobile menu */}
+      {/* mobile side menu */}
       {open ? (
         <>
           <div className="absolute w-full h-screen top-0 left-0 bg-black/50  z-20"></div>
@@ -83,7 +88,7 @@ function NavBar() {
               <AiOutlineClose size={20} />
             </div>
             <nav className="flex justify-center">
-              <ul className="flex flex-col gap-4 text-center">
+              <ul className="flex flex-col gap-4 text-center font-outfit uppercase tracking-[0.12em]">
                 <li>
                   <NavLink to="/aboutus" onClick={() => setOpen(false)}>
                     About Us

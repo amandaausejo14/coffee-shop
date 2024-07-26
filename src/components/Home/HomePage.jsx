@@ -1,6 +1,6 @@
 import Hero from "./Hero";
 import CoffeStory from "./CoffeeStory";
-// import BestDrinks from "./BestDrinks";
+import BestDrinks from "./BestDrinks";
 import Testimonials from "./Testimonials";
 import Banner from "./Banner";
 function HomePage() {
@@ -8,7 +8,7 @@ function HomePage() {
     <div className="flex-col">
       <Hero />
       <CoffeStory />
-      {/* <BestDrinks /> */}
+      <BestDrinks />
       <Testimonials />
       <Banner />
     </div>

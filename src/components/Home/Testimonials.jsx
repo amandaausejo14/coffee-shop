@@ -23,21 +23,27 @@ const testimonials = [
 ];
 const Testimonials = () => {
   return (
-    <section className="flex flex-col p-8 gap-8">
+    <section className="flex flex-col p-8 gap-20 justify-center items-center xl:px-20">
       <div>
-        <h2 className="capitalize font-outfit font-bold text-3xl text-center">Read what others have to say</h2>
+        <h2 className="capitalize font-outfit font-bold text-3xl text-center sm:text-4xl lg:text-5xl xl:text-[3.2rem]">
+          Read what others <br /> have to say
+        </h2>
       </div>
-      {testimonials.map((client) => (
-        <div className="flex flex-col items-center relative">
-          <div className="bg-orange px-6 pt-20 pb-6 text-center text-white rounded-xl w-full mt-16">
-            <p className="font-outfit font-semibold text-lg uppercase tracking-[0.12em]">{client.name}</p>
-            <p className="text-sm font-roboto-100">{client.testimonial}</p>
+      <div className="grid gap-10 sm:w-4/5 md:w-3/4 lg:grid-cols-3 lg:w-full pb-4  2xl:px-[8rem] 2xl:w-[85%]">
+        {testimonials.map((client) => (
+          <div className="flex flex-col items-center relative">
+            <div className="bg-orange px-6 pt-20 pb-6 text-center text-white rounded-xl w-full mt-16 flex flex-col sm:gap-3 lg:min-h-[25rem] xl:min-h-[20rem]">
+              <p className="font-outfit font-semibold text-lg uppercase tracking-[0.12em] sm:text-xl md:text-2xl">
+                {client.name}
+              </p>
+              <p className="text-sm font-roboto-100 sm:text-lg">{client.testimonial}</p>
+            </div>
+            <figure className="absolute -top-4">
+              <img src={client.photo} alt="testimonial" className="rounded-full border-4 border-white" />
+            </figure>
           </div>
-          <figure className="absolute -top-4">
-            <img src={client.photo} alt="testimonial" className="rounded-full border-4 border-white" />
-          </figure>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 };
