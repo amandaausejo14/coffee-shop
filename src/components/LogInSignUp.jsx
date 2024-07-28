@@ -1,12 +1,12 @@
 import axios from "axios";
-import Coffee from "../assets/coffee-log.png";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import Img from "../assets/login.jpg";
 const { VITE_URL_BACK_END } = import.meta.env;
 import { useUser } from "./user-context/context";
 
 function LogInSignUp({ state }) {
-  const [signUpForm, setSignUpForm] = useState(false);
+  const [signUpForm, setSignUpForm] = useState(true);
   const [message, setMessage] = useState("");
   const [signUpData, setSignUpData] = useState({
     username: "",
@@ -113,17 +113,20 @@ function LogInSignUp({ state }) {
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="grid items-center mx-2 my-8 md:grid-cols-2 md:mx-6 lg:gap-16">
-        <figure className="sm: hidden md:block lg:min-w-[500px]">
-          <img src={Coffee} alt="coffee" className="md: w-full" />
+    <div className="w-full min-h-screen flex justify-center items-center p-4 md:px-16 2xl:px-48">
+      <div className="w-full flex flex-col items-center mt-16 gap-8 lg:gap-12 lg:grid grid-cols-3 h-screen ">
+        <figure className="hidden lg:block lg:min-w-[500px] col-span-2 w-full h-screen rounded-lg overflow-hidden">
+          <img src={Img} alt="south america" className="md: w-full h-screen object-cover" />
         </figure>
-        <div className="flex flex-col items-center gap-4 shadow-2xl p-8 rounded-2xl md:p-4 lg:min-w-[500px]">
-          <h1 className="text-[2rem] border-b-2"> {signUpForm ? "Sign Up" : "Log In"}</h1>
-          <form action="" className="flex flex-col items-center gap-4">
+        <div className="w-full flex flex-col bg-white gap-4 p-8 rounded-2xl sm:w-[90%] md:w-[70%] md:p-10  lg:min-w-[500px]">
+          <h1 className="capitalize font-outfit font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-[3.2rem]">
+            {" "}
+            {signUpForm ? "Create account" : "Log In"}
+          </h1>
+          <form action="" className="flex flex-col gap-4 ">
             {signUpForm && (
-              <>
-                <label>User Name:</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-base font-roboto-100 sm:text-lg">User Name*</label>
                 <input
                   type="text"
                   name="userName"
@@ -134,34 +137,35 @@ function LogInSignUp({ state }) {
                   }}
                   autoComplete="username"
                 />
-              </>
+              </div>
             )}
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              className="border rounded-md"
-              required
-              onChange={(e) => {
-                setSignUpData({ ...signUpData, email: e.target.value });
-              }}
-              autoComplete={signUpForm ? "new-email" : "email"}
-            />
-            <label>Password:</label>
-            <input
-              type="password"
-              name="password"
-              className="border rounded-md"
-              required
-              onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })}
-              autoComplete={signUpForm ? "new-password" : "current-password"}
-            />
+            <div className="flex flex-col gap-1">
+              <label className="text-base font-roboto-100 sm:text-lg">Email*</label>
+              <input
+                type="email"
+                name="email"
+                className="border rounded-md"
+                required
+                onChange={(e) => {
+                  setSignUpData({ ...signUpData, email: e.target.value });
+                }}
+                autoComplete={signUpForm ? "new-email" : "email"}
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-base font-roboto-100 sm:text-lg">Password*</label>
+              <input
+                type="password"
+                name="password"
+                className="border rounded-md"
+                required
+                onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })}
+                autoComplete={signUpForm ? "new-password" : "current-password"}
+              />
+            </div>
+
             {signUpForm ? (
-              <button
-                className="bg-zinc-900 text-white w-[130px] p-1.5 rounded-xl"
-                type="submit"
-                onClick={handleSignUpSubmit}
-              >
+              <button className="bg-zinc-900 text-white p-1.5 rounded-xl" type="submit" onClick={handleSignUpSubmit}>
                 Sign Up
               </button>
             ) : (
@@ -175,17 +179,25 @@ function LogInSignUp({ state }) {
             )}
           </form>
           <div className="flex flex-col items-center gap-4">
-            <p>or</p>
-            <div className="flex gap-2 border-2 p-2 rounded-xl cursor-pointer" onClick={google}>
+            <div className="flex items-center gap-2">
+              <hr className="w-20" />
+              <p>OR</p>
+              <hr className="w-20" />
+            </div>
+            <div className="w-full flex justify-center gap-2 border-2 p-2 rounded-xl cursor-pointer" onClick={google}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="" />
               <p>{signUpForm ? "Sign Up with Google" : "Log In with Google"}</p>
             </div>
-            <div className="flex gap-2 cursor-pointer">
+            <div className="flex gap-2 cursor-pointer ">
               <p>{signUpForm ? "Already a Member?" : "New Here?"}</p>
               {signUpForm ? (
-                <button onClick={() => setSignUpForm(false)}>Log In</button>
+                <button className="underline" onClick={() => setSignUpForm(false)}>
+                  Log In
+                </button>
               ) : (
-                <button onClick={() => setSignUpForm(true)}>Sign Up</button>
+                <button className="underline" onClick={() => setSignUpForm(true)}>
+                  Sign Up
+                </button>
               )}
             </div>
             {message && (

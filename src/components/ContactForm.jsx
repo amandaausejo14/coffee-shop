@@ -29,17 +29,18 @@ function ContactForm() {
 
   return (
     <div className="md:flex flex-col items-center">
-      <div className="flex flex-col shadow-2xl p-8 rounded-2xl gap-4 md:w-[100%]">
-        <form onSubmit={onSubmit} className="flex flex-col gap-2">
+      <div className="flex flex-col shadow-2xl p-8 rounded-2xl gap-4 bg-white text-black md:h-[440px] md:w-[300px] lg:h-[480px] lg:w-[350px] xl:w-[400px]">
+        {/*made with web3form*/}
+        <form onSubmit={onSubmit} className="flex flex-col gap-2 text-base font-roboto-100 sm:text-lg">
           <label>First Name:</label>
           <input className="border rounded-md" type="text" name="name" required />
-          <label>Last Name:</label>
+          <label className="text-base font-roboto-100 sm:text-lg">Last Name:</label>
           <input type="text" name="lastName" className="border rounded-md" required />
-          <label>Email:</label>
+          <label className="text-base font-roboto-100 sm:text-lg">Email:</label>
           <input type="text" name="email" className="border rounded-md" required />
-          <label>What can we help you with?</label>
+          <label className="text-base font-roboto-100 sm:text-lg">What can we help you with?</label>
           <textarea name="message" className="border rounded-md" required></textarea>
-          <button className="bg-zinc-900 text-white w-[130px] p-1.5 rounded-xl" type="submit">
+          <button className="bg-black text-white p-1.5 mt-4 rounded-xl w-full" type="submit">
             Send Message
           </button>
         </form>
