@@ -16,7 +16,7 @@ import Product from "./components/Product";
 import Cart from "./components/Cart";
 import ShopCheckOut from "./components/ShopCheckout";
 import CheckOutSuccess from "./components/CheckoutSuccess";
-import Menu from "./components/Menu";
+
 const { VITE_URL_BACK_END } = import.meta.env;
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<ShopCheckOut />} />
         <Route path="/checkout-success" element={<CheckOutSuccess />} />
-        <Route path="/menu" element={<Menu />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
