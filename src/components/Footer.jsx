@@ -73,7 +73,9 @@ function Footer() {
                 placeholder="Enter your email"
                 className="p-2 rounded-l-lg outline-none flex-grow bg-orange placeholder-white"
               />
-              <button className="bg-white text-black font-semibold p-2 rounded-r-lg ">Submit</button>
+              <button className="bg-white text-black font-semibold p-2 rounded-r-lg border-y-2 border-r-2">
+                Submit
+              </button>
             </div>
           </div>
         </div>
