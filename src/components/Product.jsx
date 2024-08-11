@@ -52,21 +52,21 @@ const Product = () => {
   };
 
   return (
-    <div className="flex min-h-screen p-4 gap-6 items-center">
+    <div className="flex min-h-screen p-4 gap-6 items-center xl:justify-center">
       {product ? (
-        <div className="flex flex-col p-8 gap-8 mt-16 xl:flex-row xl: justify-center xl:gap-16 items-center">
-          <div className="flex flex-col gap-8 ">
+        <div className="flex flex-col p-8 gap-8 mt-16 xl:flex-row xl:justify-center xl:gap-16 items-center xl:h-full">
+          <div className="flex flex-col gap-8 h-full xl:flex-1">
             <h1 className="capitalize font-outfit font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-[3.2rem] xl:hidden">
               {product.name}
             </h1>
-            <figure className="max-w-[500px] overflow-hidden rounded-lg">
-              <img src={product.image} alt="product" />
+            <figure className="max-w-[600px] w-full h-full overflow-hidden rounded-lg">
+              <img src={product.image} alt="product" className="h-full w-full object-cover" />
             </figure>
           </div>
 
-          <div className="flex flex-col gap-8 xl:w-[50%] 2xl:w-[40%]">
+          <div className="flex flex-col gap-8 xl:flex-1">
             <div className="flex flex-col gap-2 text-base font-roboto-100 sm:text-lg">
-              <h1 className="hidden xl:block capitalize font-outfit font-bold text-3xl mb- 4 sm:text-4xl lg:text-5xl xl:text-[3.2rem] xl:mb-8">
+              <h1 className="hidden xl:block capitalize font-outfit font-bold text-3xl mb-4 sm:text-4xl lg:text-5xl xl:text-[3.2rem] xl:mb-8">
                 {product.name}
               </h1>
               <p>
@@ -82,7 +82,7 @@ const Product = () => {
                 <span className="font-semibold">Quantity of coffee:</span> {product.package_quantity.value}{" "}
                 {product.package_quantity.unit}
               </p>
-              <p>{product.description}</p>
+              <p className="max-w-[700px]">{product.description}</p>
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex gap-4 items-center">

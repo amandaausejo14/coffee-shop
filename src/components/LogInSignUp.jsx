@@ -114,7 +114,7 @@ function LogInSignUp({ state }) {
 
   return (
     <div className="w-full min-h-screen flex justify-center items-center p-4 md:px-16 2xl:px-48">
-      <div className="w-full flex flex-col items-center mt-16 gap-8 lg:gap-12 lg:grid grid-cols-3 h-screen ">
+      <div className="w-full flex flex-col items-center mt-20 gap-8 lg:gap-12 lg:grid grid-cols-3 h-screen ">
         <figure className="hidden lg:block lg:min-w-[500px] col-span-2 w-full h-screen rounded-lg overflow-hidden">
           <img src={Img} alt="south america" className="md: w-full h-screen object-cover" />
         </figure>

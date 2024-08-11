@@ -21,7 +21,7 @@ function Shop() {
 
   return (
     <div className="flex flex-col p-4 gap-6 items-center min-h-screen">
-      <div className="flex flex-col text-center gap-2 mt-16 sm:w-4/5 md:w-3/5 md:gap-4 lg:w-2/5">
+      <div className="flex flex-col text-center gap-2 mt-20 sm:w-4/5 md:w-3/5 md:gap-4 lg:w-2/5">
         <h1 className="capitalize font-outfit font-bold text-3xl text-center sm:text-4xl lg:text-5xl xl:text-[3.2rem]">
           Buy Our Coffee
         </h1>
@@ -40,8 +40,8 @@ function Shop() {
         {products.length > 0 ? (
           products.map((product) => (
             <div key={product._id}>
-              <figure className="p-4 h-[320px] w-full">
-                <img src={product.image} alt="product" className="h-full w-full object-cover" />
+              <figure className="p-4 h-[320px] w-full ">
+                <img src={product.image} alt="product" className="h-full w-full object-cover rounded-lg" />
               </figure>
               <div className="flex flex-col items-center font-outfit text-sm tracking-[0.12em] uppercase gap-2 pb-4">
                 <p>{product.name}</p>

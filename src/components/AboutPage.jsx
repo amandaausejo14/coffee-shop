@@ -7,7 +7,7 @@ import CoffeeField from "../assets/coffee-processing2.jpg";
 function AboutPage() {
   return (
     <div className="w-full flex flex-col min-h-screen p-4 gap-6 md:px-16 2xl:px-48">
-      <div className="grid justify-items-center gap-4  mt-16 lg:grid-cols-2 lg:items-center lg:h-full">
+      <div className="grid justify-items-center gap-4  mt-20 lg:grid-cols-2 lg:items-center lg:h-full">
         <figure className="grid grid-cols-2 grid-rows-2 gap-2 min-h-80 rounded-lg overflow-hidden lg:min-h-[30rem]">
           <img src={Owner} alt="owner" className="h-full w-full object-cover row-span-2" />
           <img src={Montains} alt="south american montains" className="h-full w-full object-cover" />

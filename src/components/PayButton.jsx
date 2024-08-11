@@ -18,8 +18,11 @@ const PayButton = ({ items, user }) => {
   };
 
   return (
-    <div>
-      <button className="flex border m-4 justify-between p-2 bg-black text-white" onClick={handleOnClick}>
+    <div className="w-full items-end flex">
+      <button
+        className="bg-green text-white uppercase py-2 px-4 rounded-lg tracking-[0.12em] inline-block ml-auto sm:text-lg"
+        onClick={handleOnClick}
+      >
         CheckOut
       </button>
     </div>
